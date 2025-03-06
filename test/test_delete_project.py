@@ -2,7 +2,7 @@ from fixture.project import Project
 import random
 
 
-def test_add_project(app):
+def test_delete_project(app):
     old_list = app.project.get_project_list()
     if old_list == 0:
         app.project.add(Project(name="test", description="text"))
