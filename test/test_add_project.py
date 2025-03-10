@@ -7,3 +7,5 @@ def test_add_project(app):
     app.project.add(theme)
     new_list = app.project.get_project_list()
     assert len(old_list) + 1 == len(new_list)
+    old_list.append(theme)
+    assert sorted(old_list) == sorted(new_list)
