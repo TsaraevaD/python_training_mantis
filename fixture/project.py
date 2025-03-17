@@ -11,6 +11,8 @@ class ProjectHelper:
         wd.find_element_by_xpath("//input[@value='Create New Project']").click()
         self.fill_form(project)
         wd.find_element_by_xpath("//input[@value='Add Project']").click()
+        wd.find_element_by_link_text("Proceed").click()
+        self.project_cache = None
 
     def fill_form(self, project):
         wd = self.app.wd
@@ -32,6 +34,8 @@ class ProjectHelper:
         wd.find_element_by_link_text(name).click()
         wd.find_element_by_xpath("//input[@value='Delete Project']").click()
         wd.find_element_by_xpath("//input[@value='Delete Project']").click()
+        self.project_cache = None
+
 
     project_cache = None
 
@@ -40,10 +44,10 @@ class ProjectHelper:
             wd = self.app.wd
             self.open_project()
             self.project_cache = []
-            for element in wd.find_elements_by_css_selector("tr[*row]"):
+            for element in wd.find_elements_by_css_selector("tr.row-1, tr.row-2"):
                 cells = element.find_elements_by_tag_name("td")
                 name = cells[0].text
-                description = cells[4].text
-                self.project_cache.append(Project(name=name, description=description))
+                self.project_cache.append(Project(name=name))
         return list(self.project_cache)
+
 
