@@ -17,7 +17,8 @@ class ProjectHelper:
     def fill_form(self, project):
         wd = self.app.wd
         wd.find_element_by_name("name").click()
-        wd.find_element_by_name("name").clear()
+        wd.find_element_by_name("name").c
+        lear()
         wd.find_element_by_name("name").send_keys(project.name)
         wd.find_element_by_name("description").click()
         wd.find_element_by_name("description").clear()
