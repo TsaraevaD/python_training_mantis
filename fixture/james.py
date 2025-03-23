@@ -1,4 +1,6 @@
 from telnetlib import Telnet
+
+
 class JamesHelper:
 
     def __init__(self, app):
@@ -12,7 +14,6 @@ class JamesHelper:
         else:
             session.create_user(username, password)
         session.quit()
-
 
     class Session:
         def __init__(self, host, port, username, password):
@@ -28,7 +29,6 @@ class JamesHelper:
 
         def write(self, text):
             self.telnet.write(text.encode('ascii'))
-
 
         def is_users_registered(self, username):
             self.write("verify %s\n" % username)
